@@ -30,13 +30,13 @@ This Python script analyzes a set of points to determine if they form a rectangl
 
 **Note:** If there are fewer points provided than required to form a complete rectangle, the program will assume the missing points based on the provided ones, as long as the provided points satisfy the conditions of forming a rectangle.
 
-## 2.3 Example Input File
+## 2.3 Example Input File (rectangle.txt provided)
 
-0, 0, 0
-5, 0, 0
-0, 3, 0
-0, 0, 1
-1, 1, 2
+0, 0, 0  
+5, 0, 0  
+0, 3, 0  
+0, 0, 1  
+1, 1, 2  
 
 ## Contributing
 
