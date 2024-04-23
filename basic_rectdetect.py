@@ -49,28 +49,35 @@ def diagonal_length(a, b, c):
     ab = distance(a, b)
     bc = distance(b, c)
     ac = distance(a, c)
-    return max(ab, bc, ac)
+    return round(max(ab, bc, ac), 4)
 
 
 def main():
-    file_name = input("Enter the file name: ")
+    while True:
+        file_name = input("Enter the file name: ")
 
-    try:
-        with open(file_name, "r") as file:
-            lines = file.readlines()
-            a = tuple(map(float, lines[0].strip().split(',')))
-            b = tuple(map(float, lines[1].strip().split(',')))
-            c = tuple(map(float, lines[2].strip().split(',')))
-            x = tuple(map(float, lines[3].strip().split(',')))
+        try:
+            with open(file_name, "r") as file:
+                lines = file.readlines()
+                a = tuple(map(float, lines[0].strip().split(',')))
+                b = tuple(map(float, lines[1].strip().split(',')))
+                c = tuple(map(float, lines[2].strip().split(',')))
+                x = tuple(map(float, lines[3].strip().split(',')))
 
-    except FileNotFoundError:
-        print("File not found! Please make sure to include file type extension (example: rectangle.txt")
-    except ValueError:
-        print("Error: Invalid value in the file.")
+        except FileNotFoundError:
+            print("File not found! Please make sure to include file type extension (example: rectangle.txt)")
+            continue
+        except ValueError:
+            print("Error: Invalid value in the file.")
+            continue
 
-    print(f"Rectangle can be formed: {is_rectangle(a, b, c)}")
-    print(f"X is inside rectangle: {is_inside_rectangle(a, b, c, x)}")
-    print(f"Diagonal length of the rectangle: {diagonal_length(a, b, c)}")
+        print(f"Rectangle can be formed: {is_rectangle(a, b, c)}")
+        print(f"X is inside rectangle: {is_inside_rectangle(a, b, c, x)}")
+        print(f"Diagonal length of the rectangle: {diagonal_length(a, b, c)}")
+
+        choice = input("Press Enter to exit or enter 'yes' to process another file: ").lower()
+        if choice != 'yes':
+            break
 
 
 if __name__ == "__main__":

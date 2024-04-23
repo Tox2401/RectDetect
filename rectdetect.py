@@ -59,43 +59,48 @@ def diagonal_length(vertices):
 
 
 def main():
-    file_name = input("Enter the file name: ")
+    while True:
+        file_name = input("Enter the file name: ")
 
-    try:
-        with open(file_name, "r") as file:
-            lines = file.readlines()
-            vertices = [tuple(map(float, line.strip().split(','))) for line in lines[:-1]]
-            x = tuple(map(float, lines[-1].strip().split(',')))
-            rectangle, dimensions = is_rectangle(vertices)
+        try:
+            with open(file_name, "r") as file:
+                lines = file.readlines()
+                vertices = [tuple(map(float, line.strip().split(','))) for line in lines[:-1]]
+                x = tuple(map(float, lines[-1].strip().split(',')))
+                rectangle, dimensions = is_rectangle(vertices)
 
-    except FileNotFoundError:
-        print("File not found! Please make sure to include file type extension (example: rectangle.txt")
-        return
-    except ValueError:
-        print("Error: Invalid value in the file.")
-        return
+        except FileNotFoundError:
+            print("File not found! Please make sure to include file type extension (example: rectangle.txt)")
+            continue
+        except ValueError:
+            print("Error: Invalid value in the file.")
+            continue
 
-    if len(vertices) < 3:
-        print("Insufficient vertices to form a rectangle.")
-        return
-    elif rectangle:
-        match dimensions:
-            case _ if dimensions <= 0:
-                print("Type: Dot (0D)")
-                return
-            case 1:
-                print("Type: Line (1D)")
-                return
-            case 2:
-                print("Type: Rectangle (2D)")
-            case 3:
-                print("Type: Cuboid (3D)")
-            case _:
-                print(f"Type: {dimensions}D Hyperrectangle")
-        print(f"X is inside: {is_inside_rectangle(vertices, x)}")
-        print(f"Diagonal length: {diagonal_length(vertices)}")
-    else:
-        print("Vertices provided cannot form a rectangle.")
+        if len(vertices) < 3:
+            print("Insufficient vertices to form a rectangle.")
+            return
+        elif rectangle:
+            match dimensions:
+                case _ if dimensions <= 0:
+                    print("Type: Dot (0D)")
+                    return
+                case 1:
+                    print("Type: Line (1D)")
+                    return
+                case 2:
+                    print("Type: Rectangle (2D)")
+                case 3:
+                    print("Type: Cuboid (3D)")
+                case _:
+                    print(f"Type: {dimensions}D Hyperrectangle")
+            print(f"X is inside: {is_inside_rectangle(vertices, x)}")
+            print(f"Diagonal length: {diagonal_length(vertices)}")
+        else:
+            print("Vertices provided cannot form a rectangle.")
+
+        choice = input("Press Enter to exit or enter 'yes' to process another file: ").lower()
+        if choice != 'yes':
+            break
 
 
 if __name__ == "__main__":
