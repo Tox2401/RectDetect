@@ -35,7 +35,7 @@ def is_inside_rectangle(a, b, c, x):
     :param x: tuple (x, y)
     :return: bool (True if the point is inside the rectangle, else False.)
     """
-    return min(a[0], b[0], c[0]) < x[0] < max(a[0], b[0], c[0]) and min(a[1], b[1], c[1]) < x[1] < max(a[1], b[1], c[1])
+    return min(a[0], b[0], c[0]) <= x[0] <= max(a[0], b[0], c[0]) and min(a[1], b[1], c[1]) <= x[1] <= max(a[1], b[1], c[1])
 
 
 def diagonal_length(a, b, c):
