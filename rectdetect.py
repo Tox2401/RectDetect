@@ -19,7 +19,7 @@ def is_rectangle(vertices):
             if len(set(dimensional_value)) == 1:
                 dimensions -= 1
                 continue
-            return False
+            return False, dimensions
 
     return True, dimensions
 

@@ -58,11 +58,17 @@ def main():
 
         try:
             with open(file_name, "r") as file:
+
                 lines = file.readlines()
-                a = tuple(map(float, lines[0].strip().split(',')))
-                b = tuple(map(float, lines[1].strip().split(',')))
-                c = tuple(map(float, lines[2].strip().split(',')))
-                x = tuple(map(float, lines[3].strip().split(',')))
+                if len(lines) > 4 or any(len(line.strip().split(',')) > 2 for line in lines):
+                    print("ERROR: Please use rectdetect.py for cases where more than 3 vertices "
+                          "or 2 dimensions are provided.")
+                    continue
+                else:
+                    a = tuple(map(float, lines[0].strip().split(',')))
+                    b = tuple(map(float, lines[1].strip().split(',')))
+                    c = tuple(map(float, lines[2].strip().split(',')))
+                    x = tuple(map(float, lines[3].strip().split(',')))
 
         except FileNotFoundError:
             print("File not found! Please make sure to include file type extension (example: rectangle.txt)")
@@ -71,9 +77,12 @@ def main():
             print("Error: Invalid value in the file.")
             continue
 
-        print(f"Rectangle can be formed: {is_rectangle(a, b, c)}")
-        print(f"X is inside rectangle: {is_inside_rectangle(a, b, c, x)}")
-        print(f"Diagonal length of the rectangle: {diagonal_length(a, b, c)}")
+        if is_rectangle(a, b, c):
+            print(f"Rectangle can be formed: True")
+            print(f"X is inside rectangle: {is_inside_rectangle(a, b, c, x)}")
+            print(f"Diagonal length of the rectangle: {diagonal_length(a, b, c)}")
+        else:
+            print("Vertices provided cannot form a rectangle.")
 
         choice = input("Press Enter to exit or enter 'yes' to process another file: ").lower()
         if choice != 'yes':
