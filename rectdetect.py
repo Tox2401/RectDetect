@@ -70,10 +70,13 @@ def main():
                 rectangle, dimensions = is_rectangle(vertices)
 
         except FileNotFoundError:
-            print("File not found! Please make sure to include file type extension (example: rectangle.txt)")
+            print("Error: File not found! Please make sure to include file type extension (example: rectangle.txt)")
             continue
         except ValueError:
             print("Error: Invalid value in the file.")
+            continue
+        except IndexError:
+            print("Error: The file doesn't contain any data.")
             continue
 
         if len(vertices) < 3:

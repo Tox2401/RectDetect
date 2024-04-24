@@ -28,7 +28,7 @@ def distance(point1, point2):
 
 def is_inside_rectangle(a, b, c, x):
     """
-    Check if "x" is inside a rectangle formed by "abc".
+    Check if "x" is inside or on the edge of a rectangle formed by "abc".
     :param a: tuple (x, y)
     :param b: tuple (x, y)
     :param c: tuple (x, y)
