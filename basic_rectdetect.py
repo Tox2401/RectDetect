@@ -76,6 +76,9 @@ def main():
         except ValueError:
             print("Error: Invalid value in the file.")
             continue
+        except IndexError:
+            print("Insufficient vertices to form a rectangle.")
+            continue
 
         if is_rectangle(a, b, c):
             print(f"Rectangle can be formed: True")

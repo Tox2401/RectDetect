@@ -78,7 +78,7 @@ def main():
 
         if len(vertices) < 3:
             print("Insufficient vertices to form a rectangle.")
-            return
+            continue
         elif rectangle:
             match dimensions:
                 case _ if dimensions <= 0:
